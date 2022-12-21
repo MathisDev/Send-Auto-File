@@ -1,4 +1,4 @@
-# sendLargesteFileFTP
+# SendLargesteFileFTP
 L'app Contient plusieur element :
 
 - makefile . Qui permet de lancer l'ensemble du programme .
