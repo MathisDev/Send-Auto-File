@@ -7,6 +7,11 @@ L'app Contient plusieurs elements :
 - send.py . Fichier Python3.10 qui envoie par mail le fichier comptage déterminer comme ayant l'indice le plus grand par le fichier main.py .
 - Les fichiers csv .
 
+Ficher de configuration :
+- info.ini . Contiennent les informations pour l'envoi de mail .
+  Vous pouvez remplir trois mails pour faire ce mail suivre à ces trois contacte si besoin .
+- config.ini . Stockage du nom du ficher Csv avec l'indice le plus grand .
+
 L'ensemble de l'application doit être installé dans le fichier cible de réception des fichiers .csv
 L'automatisation du lancement du processus est géré grace a cron tous les premiers du mois .
 
