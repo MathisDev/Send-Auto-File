@@ -1,4 +1,7 @@
 # Send-Auto-File
+
+Détection et envoie par mail du fichier le plus recent dans le dossier cible (csVfile) .
+
 L'app Contient plusieurs elements :
 
 - makefile . permet de lancer l'ensemble du programme .
@@ -14,6 +17,5 @@ Fichier de configuration :
 - config.ini . Stockage par le programme du nom du fichier Csv (le fichier a envoyer) avec l'indice le plus grand .
 
 L'ensemble de l'application doit être installé pour que le dossier cible de réception des fichiers .csv soit le csVfile .
-L'automatisation du lancement du processus est géré grace a cron tous les premiers du mois .
+L'automatisation du lancement du processus est géré grace a CRON tous les premiers du mois .
 
-Détection et envoie par mail du fichier le plus recent dans le dossier cible (csVfile) .
