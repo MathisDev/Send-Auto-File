@@ -1,7 +1,7 @@
 # Send-Auto-File
 L'app Contient plusieurs elements :
 
-- makefile . Qui permet de lancer l'ensemble du programme .
+- makefile . permet de lancer l'ensemble du programme .
 - bash.sh . Copie des fichiers csv dans le fichier content.txt .
 - main.py . Fichier Python3.10 qui a en sortie le fichier csv avec l'indice le plus grand exemple comptage1.csv < comptage5.csv .
 - send.py . Fichier Python3.10 qui envoie par mail le fichier comptage déterminer comme ayant l'indice le plus grand par le fichier main.py .
