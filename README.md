@@ -13,7 +13,7 @@ Ficher de configuration :
   L’ adresse mail d’envoi est a créer et a definire dans info.ini .
 - config.ini . Stockage par le programme du nom du ficher Csv (le fichier a envoyer) avec l'indice le plus grand .
 
-L'ensemble de l'application doit être installé pour que le fichier cible de réception des fichiers .csv soit le csVfile .
+L'ensemble de l'application doit être installé pour que le dossier cible de réception des fichiers .csv soit le csVfile .
 L'automatisation du lancement du processus est géré grace a cron tous les premiers du mois .
 
 Détection et envoie par mail du fichier le plus recent dans le dossier cible (csVfile) .
