@@ -12,7 +12,7 @@ Ficher de configuration :
   Vous pouvez remplir trois mails pour faire ce mail suivre à ces trois contacte si besoin .
 - config.ini . Stockage du nom du ficher Csv avec l'indice le plus grand .
 
-L'ensemble de l'application doit être installé dans le fichier cible de réception des fichiers .csv
+L'ensemble de l'application doit être installé pour que le fichier cible de réception des fichiers .csv soit le csVfile .
 L'automatisation du lancement du processus est géré grace a cron tous les premiers du mois .
 
-Détection et envoie par mail du fichier le plus recent sur un dépôt FTP .
+Détection et envoie par mail du fichier le plus recent dans le dossier cible (csVfile) .
