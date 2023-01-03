@@ -7,7 +7,7 @@ L'app Contient plusieurs elements :
 - send.py . Fichier Python3.10 qui envoie par mail le fichier comptage déterminer comme ayant l'indice le plus grand par le fichier main.py .
 - Les fichiers csv .
 
-Ficher de configuration :
+Fichier de configuration :
 - info.ini . Contient les informations nécessaires à l'envoi de mail .
   Trois adresses mails sont disponibles pour les adresses de destinations .
   L’ adresse mail d’envoi est a créer et a definire dans info.ini .
