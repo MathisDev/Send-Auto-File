@@ -9,7 +9,7 @@ L'app Contient plusieurs elements :
 
 Ficher de configuration :
 - info.ini . Contient les informations nécessaires à l'envoi de mail .
-  Vous pouvez remplir trois mails pour faire suivre ce mail suivre à ces trois contacte si besoin .
+  Trois adresses mails sont disponibles pour les adresses de destinations .
 - config.ini . Stockage du nom du ficher Csv avec l'indice le plus grand .
 
 L'ensemble de l'application doit être installé pour que le fichier cible de réception des fichiers .csv soit le csVfile .
