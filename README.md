@@ -1,4 +1,4 @@
-# SendLargesteFileFTP
+# Send-Auto-File
 L'app Contient plusieurs elements :
 
 - makefile . Qui permet de lancer l'ensemble du programme .
