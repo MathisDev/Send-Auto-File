@@ -48,27 +48,17 @@ if __name__ == "__main__":
         tabNbr = []
         # ---------
         for tabCsv in tailleListe:
-            nbr = ""
+            nbr = ''
             name = tabsCsv[tabCsv]
-            first = name[10]
-            seg =  name[11]
-            tird = name[12]
-            # ------ 1
-            if first.isnumeric():
-                nbr = nbr + first
-            else:
-                Error(1)
-            # ----- 2
-            if seg.isnumeric():
-                nbr = nbr + seg
-            else:
-                pass
-            # ----- 3
-            if tird.isnumeric():
-                nbr = nbr + tird
-            else:
-                pass
-            
+            total = len(name)
+            ii = 0 
+            while ii != total:
+                element = name[ii]
+                if element.isnumeric():
+                    nbr = nbr + element
+                else:
+                    pass
+                ii = ii + 1
             tabNbr.append(int(nbr))
             i += 1
 
