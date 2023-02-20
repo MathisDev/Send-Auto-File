@@ -19,3 +19,4 @@ Fichier de configuration :
 L'ensemble de l'application doit être installé pour que le dossier cible de réception des fichiers .csv soit le csVfile .
 L'automatisation du lancement du processus est géré grace a CRON tous les premiers du mois .
 
+pour install du mode de lancement automatique : https://jpcheck.developpez.com/tutoriels/windows/creer-tache-planifiee-sous-windows-7/
