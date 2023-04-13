@@ -1,1 +1,1 @@
-find . -name "*.csv" > ../content.txt
+ls -t > ../content.txt

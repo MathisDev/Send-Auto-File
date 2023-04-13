@@ -1,0 +1,3 @@
+os_sys
+configparser
+pip install send-email-python

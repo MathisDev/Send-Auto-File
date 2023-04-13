@@ -19,4 +19,18 @@ Fichier de configuration :
 L'ensemble de l'application doit être installé pour que le dossier cible de réception des fichiers .csv soit le csVfile .
 L'automatisation du lancement du processus est géré grace a CRON tous les premiers du mois .
 
-pour install du mode de lancement automatique : https://jpcheck.developpez.com/tutoriels/windows/creer-tache-planifiee-sous-windows-7/
+
+
+-- Planification -- 
+
+Include dans le fichier d'installation
+Sinon :
+
+Win+R and typing 'taskschd.msc'
+If you don’t have administrative permission, you have to hit Win+R and type 'runas /user:${ADMIN}' taskschd.msc 
+ - Create a basic task
+ - Monthly
+Script :
+Path of the sendAutoFile make
+
+
