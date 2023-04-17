@@ -1,1 +1,0 @@
-ls -t > ../content.txt
