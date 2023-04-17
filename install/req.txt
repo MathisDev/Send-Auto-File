@@ -1,3 +1,0 @@
-os_sys
-configparser
-send-email-python
