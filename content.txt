@@ -1,6 +1,0 @@
-./comptage2.csv
-./comptage1.csv
-./comptage10.csv
-./comptage11.csv
-./comptage13.csv
-./comptage12.csv
