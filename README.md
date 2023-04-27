@@ -18,10 +18,12 @@ Votre Configuration :
 - contentMail/main_mail.txt . Pour définir le message principal du mail . 
 - contentMail/sub_mail.txt . Pour définir le sujet du mail . 
 
--- Planification -- 
+-- Installation -- 
 
-Include dans le fichier d'installation
-Sinon :
+Avoir Python 3.10 . link:https://www.python.org/downloads/
+Compiler avec pyinstaller le main.py en onefile . link:https://wiki-fablab.grandbesancon.fr/doku.php?id=howto:python:pyinstaller
+Remplacer le main.exe a la pace de l'ancien main puis suprimer tout dossier ou ficher superflue du a la compilation .
+Puis ajouter le .exe a une tache tout les mois .
 
 Win+R and typing 'taskschd.msc'
 If you don’t have administrative permission, you have to hit Win+R and type 'runas /user:${ADMIN}' taskschd.msc 
