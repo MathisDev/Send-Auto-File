@@ -29,7 +29,7 @@ if __name__ == "__main__":
     # ------
     tabsCsv = []
     i = 0
-    status = False 
+    status = False
     # ---------
     fichier = open("allUsine.txt", "r")
     with fichier as filin:
@@ -46,6 +46,6 @@ if __name__ == "__main__":
         sendERRORmail()
         quit()
     else:
-        # --- Send to ini file -- 
+        # --- Send to ini file --
         putINI(tabsCsv)
     mainSend()
