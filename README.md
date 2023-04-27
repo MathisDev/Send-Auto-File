@@ -1,7 +1,5 @@
 # Send-Auto-File
 
-Détection et envoie par mail du fichier le plus recent dans le dossier cible (csVfile) .
-
 L'app Contient plusieurs elements :
 
 - bash.sh . Copie des fichiers csv dans le fichier content.txt .
@@ -23,6 +21,7 @@ Votre Configuration :
 Avoir Python 3.10 . link:https://www.python.org/downloads/
 Compiler avec pyinstaller le main.py en onefile . link:https://wiki-fablab.grandbesancon.fr/doku.php?id=howto:python:pyinstaller
 Remplacer le main.exe a la pace de l'ancien main puis suprimer tout dossier ou ficher superflue du a la compilation .
+Le dossier Send-Auto-File est a placer dans le dossier depot des ficher .csv
 Puis ajouter le .exe a une tache tout les mois .
 
 Win+R and typing 'taskschd.msc'
