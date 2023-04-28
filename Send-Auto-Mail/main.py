@@ -23,7 +23,8 @@ def maximum(liste):
     return maxi
 
 if __name__ == "__main__":
-    subprocess.run(["bash", "../.bash.sh"])
+    cmd = 'ls -art ../ > allNameFile '
+    os.system(cmd)
     print("##-------- Start Of The Process --------##")
     # Add All 'csv' file in 'tabCsv'
     # ------
@@ -31,14 +32,10 @@ if __name__ == "__main__":
     i = 0
     status = False
     # ---------
-    fichier = open("allUsine.txt", "r")
+    fichier = open("allNameFile", "r")
     with fichier as filin:
         ligne = filin.readline()
-        tabsCsv.append(ligne)
-    fichier.close()
-    fichier = open("allBase.txt", "r")
-    with fichier as filin:
-        ligne = filin.readline()
+        print("ligne = "+ligne)
         tabsCsv.append(ligne)
     fichier.close()
 
@@ -47,5 +44,5 @@ if __name__ == "__main__":
         quit()
     else:
         # --- Send to ini file --
-        putINI(tabsCsv)
+        put_in(tabsCsv)
     mainSend()
