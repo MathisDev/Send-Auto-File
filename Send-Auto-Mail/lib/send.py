@@ -27,11 +27,20 @@ def sendMail(listeinfo,listedocs):
     subject = subjectContent()
 
     # define a docs to send
+    if ((listedocs[0] == "" or listedocs[1] == "") and (listedocs[0] == "" and listedocs[1] == "") ):
+        print("Error File is empty for attachement 'sendMail' ")
+        return
     usine_file = listedocs[0]
-    usine_file = "../" + usine_file
-
     base_file = listedocs[1]
-    base_file = "../" + base_file
+
+    # Clean string for \n
+
+    usine_file = base_file.replace("\n", "")
+    base_file = base_file.replace("\n", "")
+
+    print("After Clean ")
+    print("base ="+base_file)
+    print("usine ="+ usine_file)
 
     #The mail addresses and password
     receiver_address = listeinfo[0] # mail_1
@@ -50,7 +59,7 @@ def sendMail(listeinfo,listedocs):
     message['Subject'] = subject  #The subject line
     #The body and the attachments for the mail
     message.attach(MIMEText(mail_content, 'plain'))
-
+    print("Usine file ="+usine_file)
     attachement_usine_file = open(usine_file, "rb")
     attachement_base_file = open(base_file, "rb")
 
@@ -80,19 +89,21 @@ def sendMail(listeinfo,listedocs):
     session.sendmail(sender_address, receiver_address, text)
     session.quit()
 
-def mainSend():
+def mainSend(dico):
     # ini file config
     config = configparser.ConfigParser()
     config.read('config.ini')
-    usine = config.get('def','usine') # Adress du dernier fichier usine
-    base = config.get('def','base') # Adress du dernier fichier base
+    usine = dico['usine'] # Adress du dernier fichier usine
+    base = dico['base'] # Adress du dernier fichier base
+    if (base == "" or usine == ""):
+        print("Ini file is Empty 'mainSend' ")
     
     retour = "Une erreur s'est produite lors de l'envoi de mail"
 
     # ini file info.ini
 
     config.read('info.ini')
-    # Mail 
+    # Mail
     mail_1 = config.get('info','mail_1')
     mail_2 = config.get('info','mail_2')
     mail_3 = config.get('info','mail_3')
@@ -102,6 +113,7 @@ def mainSend():
     pasw = config.get('info','pass')
 
     listeOfMail = [mail_1,mail_2,mail_3]
+    listeDoc = [usine,base]
 
     print("Sending ....")
 
@@ -110,7 +122,6 @@ def mainSend():
             pass
         else:
             listeInfo = [x,pasw,mail_sender]
-            listeDoc = [usine,base]
             sendMail(listeInfo,listeDoc)
 
     print(" ##----- Send "+usine+ " and "+base+" ✅ -----##")

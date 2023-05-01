@@ -1,11 +1,9 @@
 # Import Dynamique
 import os
 import configparser
+import subprocess
 # Import Satatic
 from lib.send import *
-from lib.loc import *
-import subprocess
-
 # ini file config
 config = configparser.ConfigParser()
 
@@ -13,36 +11,33 @@ def Error(i):
     if i == i:
         print("Probleme nommage erroner")
     return 0
-def maximum(liste):
-    ii = 0
-    maxi = liste[0]
-    for i in liste:
-        if i >= maxi:
-            maxi = i
-            ii += 1
-    return maxi
 
 if __name__ == "__main__":
-    cmd = 'ls -art ../ > allNameFile '
+    cmd = 'ls -d ../*Usine*.csv > allUsine && ls -d ../*base*.csv > allBase'
     os.system(cmd)
     print("##-------- Start Of The Process --------##")
-    # Add All 'csv' file in 'tabCsv'
-    # ------
-    tabsCsv = []
-    i = 0
-    status = False
-    # ---------
-    fichier = open("allNameFile", "r")
-    with fichier as filin:
-        ligne = filin.readline()
-        print("ligne = "+ligne)
-        tabsCsv.append(ligne)
-    fichier.close()
 
-    if tabsCsv[0] == "":
+    # ---- Create Dico -----
+    dico_file = {}
+    dico_file["base"] = 0
+    dico_file["usine"] = 0
+
+    # - Base -
+    fichier_base = open("allBase", "r")
+    line = fichier_base.readline()
+    dico_file["base"] = line
+    fichier_base.close()
+    # - Usine -
+
+    fichier_usine = open("allUsine", "r")
+    line = fichier_usine.readline()
+    dico_file["usine"] = line
+    fichier_usine.close()
+
+    if  dico_file["base"] == '' and dico_file["usine"] == '':
         sendERRORmail()
         quit()
     else:
-        # --- Send to ini file --
-        put_in(tabsCsv)
-    mainSend()
+       # --- Send to ini file --
+        mainSend(dico_file)
+        quit()
