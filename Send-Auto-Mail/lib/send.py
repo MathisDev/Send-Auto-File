@@ -19,8 +19,59 @@ def subjectContent():
     fichier.close()
     return content
 
+def errorContent():
+    fichier = open('contentMail/error_mail.txt','r')
+    content = fichier.read()
+    fichier.close()
+    return content
+
 def sendERRORmail(listeinfo):
-    print('Error')
+    mail_content = errorContent()
+    subject = "Error"
+
+    print(listeinfo)
+    #The mail addresses and password
+    receiver_address = listeinfo[0] # mail_1
+    sender_pass = listeinfo[1]      # pass
+    sender_address = listeinfo[2]   # mail_sender
+
+    print("Login : "+sender_address)
+    print('Pasword : '+sender_pass)
+    print(" To ")
+    print("recu par :"+receiver_address)
+
+    #Setup the MIME
+    message = MIMEMultipart()
+    message['From'] = sender_address
+    message['To'] = receiver_address
+    message['Subject'] = subject  #The subject line
+
+    #Create SMTP session for sending the mail
+    session = smtplib.SMTP('smtp.gmail.com', 587) #use gmail with port
+    session.starttls() #enable security
+    session.login(sender_address, sender_pass) #login with mail_id and password
+    text = message.as_string()
+    session.sendmail(sender_address, receiver_address, text)
+    session.quit()
+
+def main_sendERRORmail():
+    # ini file config
+    config = configparser.ConfigParser()
+
+    config.read('info.ini')
+    # Mail
+    mail_1 = config.get('info','mail_1')
+    mail_2 = config.get('info','mail_2')
+    mail_3 = config.get('info','mail_3')
+    # Mail sender
+    mail_sender = config.get('info','mail_sender')
+    # Pass
+    pasw = config.get('info','pass')
+
+    listeOfMail = [mail_1,mail_2,mail_3]
+
+    sendERRORmail(listeOfMail)
+
 
 def sendMail(listeinfo,listedocs):
     mail_content = mailContent()
@@ -28,10 +79,12 @@ def sendMail(listeinfo,listedocs):
 
     # define a docs to send
     usine_file = listedocs[0]
-    usine_file = "../" + usine_file
-
     base_file = listedocs[1]
-    base_file = "../" + base_file
+
+    # Clean string for \n
+
+    usine_file = base_file.replace("\n", "")
+    base_file = base_file.replace("\n", "")
 
     #The mail addresses and password
     receiver_address = listeinfo[0] # mail_1
@@ -50,7 +103,6 @@ def sendMail(listeinfo,listedocs):
     message['Subject'] = subject  #The subject line
     #The body and the attachments for the mail
     message.attach(MIMEText(mail_content, 'plain'))
-
     attachement_usine_file = open(usine_file, "rb")
     attachement_base_file = open(base_file, "rb")
 
@@ -80,19 +132,21 @@ def sendMail(listeinfo,listedocs):
     session.sendmail(sender_address, receiver_address, text)
     session.quit()
 
-def mainSend():
+def mainSend(dico):
     # ini file config
     config = configparser.ConfigParser()
     config.read('config.ini')
-    usine = config.get('def','usine') # Adress du dernier fichier usine
-    base = config.get('def','base') # Adress du dernier fichier base
+    usine = dico['usine'] # Adress du dernier fichier usine
+    base = dico['base'] # Adress du dernier fichier base
+    if (base == "" or usine == ""):
+        main_sendERRORmail()
     
     retour = "Une erreur s'est produite lors de l'envoi de mail"
 
     # ini file info.ini
 
     config.read('info.ini')
-    # Mail 
+    # Mail
     mail_1 = config.get('info','mail_1')
     mail_2 = config.get('info','mail_2')
     mail_3 = config.get('info','mail_3')
@@ -102,6 +156,7 @@ def mainSend():
     pasw = config.get('info','pass')
 
     listeOfMail = [mail_1,mail_2,mail_3]
+    listeDoc = [usine,base]
 
     print("Sending ....")
 
@@ -110,7 +165,6 @@ def mainSend():
             pass
         else:
             listeInfo = [x,pasw,mail_sender]
-            listeDoc = [usine,base]
             sendMail(listeInfo,listeDoc)
 
     print(" ##----- Send "+usine+ " and "+base+" ✅ -----##")
