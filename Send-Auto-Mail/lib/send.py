@@ -8,7 +8,7 @@ from email.mime.base import MIMEBase
 from email import encoders
 
 def mailContent():
-    fichier = open('contentMail/main_mail.txt','r')
+    fichier = open('contentMail/main_mail.txt','r') 
     content = fichier.read()
     fichier.close()
     return content
@@ -81,11 +81,6 @@ def sendMail(listeinfo,listedocs):
     usine_file = listedocs[0]
     base_file = listedocs[1]
 
-    # Clean string for \n
-
-    usine_file = base_file.replace("\n", "")
-    base_file = base_file.replace("\n", "")
-
     #The mail addresses and password
     receiver_address = listeinfo[0] # mail_1
     sender_pass = listeinfo[1]      # pass
@@ -131,6 +126,9 @@ def sendMail(listeinfo,listedocs):
     text = message.as_string()
     session.sendmail(sender_address, receiver_address, text)
     session.quit()
+    print("Vous avez envoyer ca :")
+    print(usine_file)
+    print(base_file)
 
 def mainSend(dico):
     # ini file config
@@ -138,8 +136,15 @@ def mainSend(dico):
     config.read('config.ini')
     usine = dico['usine'] # Adress du dernier fichier usine
     base = dico['base'] # Adress du dernier fichier base
-    if (base == "" or usine == ""):
+    if (base == usine):
         main_sendERRORmail()
+    elif (base == "" or usine == ""):
+        main_sendERRORmail()
+    else:
+        print("Vous aller envoyer :")
+        print(usine)
+        print(base)
+    
     
     retour = "Une erreur s'est produite lors de l'envoi de mail"
 
@@ -166,5 +171,3 @@ def mainSend(dico):
         else:
             listeInfo = [x,pasw,mail_sender]
             sendMail(listeInfo,listeDoc)
-
-    print(" ##----- Send "+usine+ " and "+base+" ✅ -----##")

@@ -36,28 +36,27 @@ if __name__ == "__main__":
             csv_liste.append(el)
         else:
             pass
-
+    print(csv_liste)
     # ---- Create Dico -----
     dico_file = {}
     dico_file["base"] = ""
     dico_file["usine"] = ""
-    status_base = False
-    status_usine = False
+
     for el in csv_liste:
         if el[19] == 'b':
-            if status_base == False:
+            if dico_file["base"] == "":
+                print("add base"+el)
                 dico_file["base"] = el
-                status_base = True
             else:
                 pass
         if el[26] == 'U':
-            if status_usine == False:
+            if dico_file["usine"] == "":
+                print("Add usine" + el)
                 dico_file["usine"] = el
-                status_usine == True
             else:
                 pass
 
-    if  (dico_file["base"] == "" and dico_file["base"] == "") and (dico_file["base"] == "" or dico_file["base"] == ""): 
+    if  (dico_file["base"] == "" and dico_file["base"] == "") and (dico_file["base"] == "" or dico_file["base"] == ""):
         main_sendERRORmail()
     else:
        # --- Send to ini file --
