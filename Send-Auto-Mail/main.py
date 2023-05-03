@@ -8,7 +8,6 @@ from pathlib import Path
 # Import Satatic
 from lib.send import *
 
-
 # ini file config
 config = configparser.ConfigParser()
 
@@ -36,30 +35,25 @@ if __name__ == "__main__":
             csv_liste.append(el)
         else:
             pass
-
     # ---- Create Dico -----
     dico_file = {}
     dico_file["base"] = ""
     dico_file["usine"] = ""
-    status_base = False
-    status_usine = False
+
     for el in csv_liste:
         if el[19] == 'b':
-            if status_base == False:
+            if dico_file["base"] == "":
                 dico_file["base"] = el
-                status_base = True
             else:
                 pass
         if el[26] == 'U':
-            if status_usine == False:
+            if dico_file["usine"] == "":
                 dico_file["usine"] = el
-                status_usine == True
             else:
                 pass
 
-    if  (dico_file["base"] == "" and dico_file["base"] == "") and (dico_file["base"] == "" or dico_file["base"] == ""): 
-        main_sendERRORmail()
+    if  (dico_file["base"] == "" and dico_file["usine"] == "") or (dico_file["base"] == "" or dico_file["base"] == ""):
+        pass
     else:
        # --- Send to ini file --
         mainSend(dico_file)
-        quit()
